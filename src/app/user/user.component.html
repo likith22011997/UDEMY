@@ -1,11 +1,20 @@
 <div>
-    <button>
-        <!-- <span>NAME</span> -->
-        <!-- Interpolation -->
-        <!-- <span>{{selectedUser}}</span> -->
-        <!-- property binding -->
-        <img [src]="'assets/users/' + selectedUser.avatar" />
-        <!-- output dynamic content with string Interpolation -->
-        <span><b>{{ selectedUser.name }}</b></span>
-    </button>
+  <!-- adding event listeners(click is event listener below) -->
+   <!-- () brackets are mandatory as get is not used for method inside class in ts file -->
+  <button (click)="onselectuser()">
+    <!-- <span>NAME</span> -->
+
+    <!-- Interpolation -->
+    <!-- <span>{{selectedUser}}</span> -->
+
+    <!-- property binding ***the below is one way of dynamic property binding inside the tag -->
+    <!-- <img [src]="'assets/users/' + selectedUser.avatar" /> -->
+
+    <!-- there is other way also for property binding by using method inside class and calling it inside in html tag-->
+    <!--NOTE :  get keyword is used in component.ts file for the imagePath method and hence () are not required while calling method -->
+    <img [src]="imagePath">
+
+    <!-- output dynamic content with string Interpolation ***-->
+    <span><b>{{ selectedUser.name }}</b></span >
+  </button>
 </div>
