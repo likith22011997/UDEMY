@@ -1,4 +1,10 @@
+
+// Input uppercase is decorator
 import { Component, Input, OnInit } from '@angular/core';
+
+// lowercase input is a function. to provide input using signals without using decorator
+// import { input } from '@angular/core';
+
 // import dummy users data to make use in user component
 import { DUMMY_USERS } from '../dummy-users';
 
@@ -48,15 +54,32 @@ export class UserComponent implements OnInit {
 
     ngOnInit() {
     }
-    // to get the avatar/name value from outside the component i.e., from app component
+//     // to get the avatar/name value from outside the component i.e., from app component
 @Input () avatar : string;
 @Input () name : string;
 
  get imagePath (){
   return 'assets/users/' + this.avatar;
 }
-
 onselectuser(){
+}
+}
 
-}
-}
+// using signals to provide inputs without using decorator(ex : @Input)
+// export class UserComponent implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit() {
+//   }
+//   // below syntax is TS not of angular**. telling TS which type of input given for property avatar
+//   avatar = input.required<string>();
+//   name = input.required<string>();
+//   // passing signals
+//   imagePath = computed(() => {
+//     return 'assests/users/' + this.avatar();
+//   });
+//   onselectuser() {
+
+//   }
+// }
