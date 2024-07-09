@@ -1,12 +1,34 @@
 <!-- <router-outlet></router-outlet> -->
 <app-header></app-header>
 <main>
-    <ul id="users">
-        <li><app-user [avatar]="users[0].avatar" [name]="users[0].name"></app-user>
-        </li>
-        <li><app-user [avatar]="users[1].avatar" [name]="users[1].name"></app-user>
-        </li>
-        <li><app-user [avatar]="users[2].avatar" [name]="users[2].name"></app-user>
-        </li>
-    </ul>
+  <ul id="users">
+    <li>
+      <app-user
+        [id]="users[0].id"
+        [avatar]="users[0].avatar"
+        [name]="users[0].name"
+        (select)="onuserselect($event)"
+      ></app-user>
+      <!-- (event binding)'event' is used to listen to 'select' to emit the output, 'select' is 
+       the customer event created by us.. $event wil hold the data/value that was emitted and then we can
+       handle the event-->
+    </li>
+    <li>
+      <app-user
+        [id]="users[1].id"
+        [avatar]="users[1].avatar"
+        [name]="users[1].name"
+        (select)="onuserselect($event)"
+      ></app-user>
+    </li>
+    <li>
+      <app-user
+        [id]="users[2].id"
+        [avatar]="users[2].avatar"
+        [name]="users[2].name"
+        (select)="onuserselect($event)"
+      ></app-user>
+    </li>
+  </ul>
+  <h2><b>TASKS OF THE USER</b></h2>
 </main>

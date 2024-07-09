@@ -1,6 +1,6 @@
 
 // Input uppercase is decorator
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 // lowercase input is a function. to provide input using signals without using decorator
 // import { input } from '@angular/core';
@@ -52,17 +52,29 @@ export class UserComponent implements OnInit {
 
   constructor() { }
 
-    ngOnInit() {
-    }
-//     // to get the avatar/name value from outside the component i.e., from app component
-@Input () avatar : string;
-@Input () name : string;
+  ngOnInit() {
+  }
+  // to get the avatar/name value from outside the component i.e., from app component
+  @Input() avatar: string;
+  @Input() name: string;
+  @Input() id: string;
+  // using output decorator value needed in output can be emitted. emitter stores the value in 'select'
+  @Output() select = new EventEmitter();
+  
+  // other functionalities like output,input can be used instead of @Input,@Output decorators.
+  //  the below are the new in angular, not used much but still for knwing them.
+  // id = input.required<string>();
+  // name = input.required<string>();
+  // avatar = input.required<string>();
+  // select = output<string>();
 
- get imagePath (){
-  return 'assets/users/' + this.avatar;
-}
-onselectuser(){
-}
+  get imagePath() {
+    return 'assets/users/' + this.avatar;
+  }
+  onselectuser() {
+    // select property is used to emit new value when the button is clicked.pass the value to emit(id in this case)
+    this.select.emit(this.id);
+  }
 }
 
 // using signals to provide inputs without using decorator(ex : @Input)
