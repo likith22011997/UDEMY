@@ -55,12 +55,20 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
   // to get the avatar/name value from outside the component i.e., from app component
-  @Input() avatar: string;
-  @Input() name: string;
-  @Input() id: string;
+  // ! is used to reduce possibility of getting any undefined value. but its not mandatory to use
+  // @Input() avatar!: string;
+  // @Input() name!: string;
+  // @Input() id!: string;
+  // in above all three properties are accepted separately. we can accept in group as below
+  @Input() user: {
+    id : string;
+    avatar : string;
+    name : string;
+  };
   // using output decorator value needed in output can be emitted. emitter stores the value in 'select'
-  @Output() select = new EventEmitter();
-  
+  // string is the type of value that is emitted.. it is not mandatory to define..
+  @Output() select = new EventEmitter<string>();
+
   // other functionalities like output,input can be used instead of @Input,@Output decorators.
   //  the below are the new in angular, not used much but still for knwing them.
   // id = input.required<string>();
@@ -68,12 +76,23 @@ export class UserComponent implements OnInit {
   // avatar = input.required<string>();
   // select = output<string>();
 
-  get imagePath() {
-    return 'assets/users/' + this.avatar;
+// this.avatar is used when input is used separately.
+  // get imagePath() {
+  //   return 'assets/users/' + this.avatar;
+  // }
+
+  // this.user.avatar, when the input is taken in group of user
+   get imagePath() {
+    return 'assets/users/' + this.user.avatar;
   }
   onselectuser() {
     // select property is used to emit new value when the button is clicked.pass the value to emit(id in this case)
-    this.select.emit(this.id);
+    // this.select.emit(this.id);
+    // console.log(this.name);
+
+    this.select.emit(this.user.id);
+    console.log(this.user.name);
+
   }
 }
 

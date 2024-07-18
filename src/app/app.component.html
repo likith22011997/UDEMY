@@ -1,7 +1,10 @@
 <!-- <router-outlet></router-outlet> -->
+<!-- (event binding)'event' is used to listen to 'select' to emit the output, 'select' is 
+       the customer event created by us.. $event wil hold the data/value that was emitted and then we can
+       handle the event-->
 <app-header></app-header>
 <main>
-  <ul id="users">
+  <!-- <ul id="users">
     <li>
       <app-user
         [id]="users[0].id"
@@ -9,9 +12,6 @@
         [name]="users[0].name"
         (select)="onuserselect($event)"
       ></app-user>
-      <!-- (event binding)'event' is used to listen to 'select' to emit the output, 'select' is 
-       the customer event created by us.. $event wil hold the data/value that was emitted and then we can
-       handle the event-->
     </li>
     <li>
       <app-user
@@ -29,6 +29,25 @@
         (select)="onuserselect($event)"
       ></app-user>
     </li>
+  </ul> -->
+  <!-- <h2><b>TASKS OF THE USER</b></h2> -->
+  <!-- using property binding  -->
+
+  <!-- when the input is passed inside user group instead separately -->
+
+  <ul id="users">
+    <li>
+      <app-user [user]="users[0]" (select)="onuserselect($event)"></app-user>
+    </li>
+    <br>
+    <li>
+      <app-user [user]="users[1]" (select)="onuserselect($event)"></app-user>
+    </li>
+    <br>
+    <li>
+      <app-user [user]="users[2]" (select)="onuserselect($event)"></app-user>
+    </li>
+    <br>
   </ul>
-  <h2><b>TASKS OF THE USER</b></h2>
+  <app-tasks [id]="onselectuser?.id" [name]="onselectuser?.name"></app-tasks>
 </main>
