@@ -4,6 +4,7 @@
        handle the event-->
 <app-header></app-header>
 <main>
+  <!-- each user is called separately -->
   <!-- <ul id="users">
     <li>
       <app-user
@@ -34,8 +35,8 @@
   <!-- using property binding  -->
 
   <!-- when the input is passed inside user group instead separately -->
-
-  <ul id="users">
+  <!-- each user is called separately in different way -->
+  <!-- <ul id="users">
     <li>
       <app-user [user]="users[0]" (select)="onuserselect($event)"></app-user>
     </li>
@@ -48,6 +49,38 @@
       <app-user [user]="users[2]" (select)="onuserselect($event)"></app-user>
     </li>
     <br>
+  </ul> -->
+
+  <!-- calling the user dynamically when there are n number of users in the list
+  the "elements" word below can be of name of our choice. but the "users" shd be the data to be called
+     which contains the users data like id, name, image .track is used to check the unique in each user to check 
+     the below syntax is used in angular 17 -->
+  <!-- <ul id="users">
+    @for (user of user; track user.id) {
+    <li>
+      <app-user [user]="users[2]" (select)="onuserselect($event)"></app-user>
+    </li>
+    <br />
+    }
+  </ul> -->
+  <!-- <app-tasks [id]="onselectuser?.id" [name]="onselectuser?.name"></app-tasks> -->
+  <!-- if condition to check if user is clicked and the syntax used in angualar 17. its a angular feature not ts -->
+  <!-- @if(onselectuser){
+    <app-tasks [id]="onselectuser.id" [name]="onselectuser.name"></app-tasks>
+   } -->
+
+  <!-- ngfor and Ngif structural directive used to put condition. "showrror" keyword name below is our choice-->
+  <ul id="user">
+    <li *ngFor="let user of users">
+      <app-user [user]="user" (select)="onuserselect($event)"> </app-user>
+    </li>
   </ul>
-  <app-tasks [id]="onselectuser?.id" [name]="onselectuser?.name"></app-tasks>
+  <app-tasks
+    *ngIf="onselectuser; else showerror"
+    [name]="onselectuser!.name"
+    [id]="onselectuser!.id"
+  ></app-tasks>
+  <ng-template #showerror>
+    <h1 id="showerror"><b>Select a user!!!</b></h1>
+  </ng-template>
 </main>

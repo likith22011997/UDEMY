@@ -17,7 +17,8 @@ export class AppComponent {
   // to define component inputs
   users = DUMMY_USERS;
   // store info which user is selected.as of now initially store first user
-  selecteduserid = 'u1';
+  // selecteduserid = 'u1';
+  selecteduserid?: string;
 
   get onselectuser() {
     // find is a method built in JS not angular. it allows to find a specific element in a array of elements
