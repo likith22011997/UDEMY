@@ -1,3 +1,22 @@
 <!-- output of name which is taken as input in ts file from app component -->
-<h2><b>{{name}}</b></h2>
-<h2><b>{{id}}</b></h2>
+<section id="tasks">
+    <header>
+        <h2><b>{{name}}'s tasks</b></h2>
+        <!-- <h2><b>{{id}}</b></h2> -->
+        <menu>
+            <button>
+                Add task
+            </button>
+        </menu>
+    </header>
+    <ul>
+        <li>
+            <app-task></app-task>
+        </li>
+        <li>
+            <app-task></app-task>
+        </li>
+    </ul>
+
+</section>
+
